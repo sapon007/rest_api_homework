@@ -7,7 +7,7 @@ import static io.restassured.RestAssured.given;
 
 public class GetSingleUserTests extends TestBase {
     @Test
-    void successfulGettingSingleUser() {
+    void successfulGettingSingleUserTest() {
         given()
                 .log().uri()
                 .log().method()
@@ -20,7 +20,7 @@ public class GetSingleUserTests extends TestBase {
     }
 
     @Test
-    void check404WhenSingleUserNotFount() {
+    void check404WhenSingleUserNotFountTest() {
         given()
                 .log().uri()
                 .log().method()

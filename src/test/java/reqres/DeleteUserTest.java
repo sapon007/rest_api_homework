@@ -6,7 +6,7 @@ import static io.restassured.RestAssured.given;
 
 public class DeleteUserTest extends TestBase {
     @Test
-    void deletingUser() {
+    void deletingUserTest() {
         given()
                 .log().uri()
                 .log().method()

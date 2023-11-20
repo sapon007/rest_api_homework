@@ -11,7 +11,7 @@ public class RegisterTests extends TestBase {
     String registerBody = "{ \"email\": \"eve.holt@reqres.in\",    \"password\": \"pistol\"}";
 
     @Test
-    void successfulRegister() {
+    void successfulRegisterTest() {
         given()
                 .log().uri()
                 .log().method()

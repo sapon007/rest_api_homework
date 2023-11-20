@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.is;
 
 public class GetListUsersTest extends TestBase{
     @Test
-    void successfulGettingListUsers() {
+    void successfulGettingListUsersTest() {
         given()
                 .log().uri()
                 .log().method()
