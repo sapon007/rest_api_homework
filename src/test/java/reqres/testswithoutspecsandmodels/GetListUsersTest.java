@@ -1,4 +1,4 @@
-package reqres.testsWithoutSpecsAndModels;
+package reqres.testswithoutspecsandmodels;
 
 import org.junit.jupiter.api.Test;
 import reqres.TestBase;

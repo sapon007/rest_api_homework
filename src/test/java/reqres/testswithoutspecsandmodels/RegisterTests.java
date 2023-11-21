@@ -1,4 +1,4 @@
-package reqres.testsWithoutSpecsAndModels;
+package reqres.testswithoutspecsandmodels;
 
 import io.restassured.http.ContentType;
 import org.junit.jupiter.api.Test;

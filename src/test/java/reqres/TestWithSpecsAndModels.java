@@ -6,8 +6,7 @@ import reqres.models.lombokmodelsforlistusers.ListUsersModel;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.Matchers.is;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static reqres.specs.RestApiSpecs.*;
 
 public class TestWithSpecsAndModels extends TestBase {
@@ -30,8 +29,8 @@ public class TestWithSpecsAndModels extends TestBase {
                         .extract().as(RegisterResponsePojoModel.class));
 
         step("Verify response", () -> {
-            assertEquals("QpwL5tke4Pnpja7X4", response.getToken());
-            assertEquals(4, response.getId());
+            assertThat(response.getToken()).isEqualTo("QpwL5tke4Pnpja7X4");
+            assertThat(response.getId()).isEqualTo(4);
         });
 
     }
@@ -53,20 +52,28 @@ public class TestWithSpecsAndModels extends TestBase {
                         .extract().as(RegisterResponseLombokModel.class));
 
         step("Verify response", () -> {
-            assertEquals("QpwL5tke4Pnpja7X4", response.getToken());
-            assertEquals(4, response.getId());
+            assertThat(response.getToken()).isEqualTo("QpwL5tke4Pnpja7X4");
+            assertThat(response.getId()).isEqualTo(4);
         });
     }
 
     @Test
     void successfulGettingSingleUserTest() {
-        step("Getting single user", () -> {
-            given(requestSpec)
-                    .when()
-                    .get("/users/2")
-                    .then()
-                    .spec(responseSpec)
-                    .statusCode(200);
+        SingleUserModel response = step("Getting single user", () ->
+                        given(requestSpec)
+                                .when()
+                                .get("/users/2")
+                                .then()
+                                .spec(responseSpec)
+                                .statusCode(200)
+                                .extract().as(SingleUserModel.class)
+                   );
+
+        step("Verify response data{}", () -> {
+            assertThat(response.getData().getId()).isEqualTo(2);
+            assertThat(response.getData().getEmail()).isEqualTo("janet.weaver@reqres.in");
+            assertThat(response.getData().getFirstName()).isEqualTo("Janet");
+            assertThat(response.getData().getLastName()).isEqualTo("Weaver");
         });
 
     }
@@ -85,21 +92,6 @@ public class TestWithSpecsAndModels extends TestBase {
     }
 
     @Test
-    void successfulGettingListUsersTest() {
-        step("Getting list of users", () -> {
-            given(requestSpec)
-                    .when()
-                    .get("/users?page=2")
-                    .then()
-                    .spec(responseSpec)
-                    .statusCode(200)
-                    .body("page", is(2))
-                    .body("total",is(12));
-        });
-
-    }
-
-    @Test
     void successfulGettingListUsersWithLombokTest() {
         ListUsersModel response = step("Getting list of users with lombok", () ->
                 given(requestSpec)
@@ -108,13 +100,11 @@ public class TestWithSpecsAndModels extends TestBase {
                         .then()
                         .spec(responseSpec)
                         .statusCode(200)
-                        .body("page", is(2))
-                        .body("total",is(12))
                         .extract().as(ListUsersModel.class));
 
         step("Verify response", () -> {
-            assertEquals(2, response.getPage());
-            assertEquals(12, response.getTotal());
+            assertThat(response.getPage()).isEqualTo(2);
+            assertThat(response.getTotal()).isEqualTo(12);
         });
     }
 
