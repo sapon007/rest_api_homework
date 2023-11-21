@@ -1,11 +1,12 @@
-package reqres;
+package reqres.testsWithoutSpecsAndModels;
 
 import org.junit.jupiter.api.Test;
+import reqres.TestBase;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
-public class GetListUsersTest extends TestBase{
+public class GetListUsersTest extends TestBase {
     @Test
     void successfulGettingListUsersTest() {
         given()
