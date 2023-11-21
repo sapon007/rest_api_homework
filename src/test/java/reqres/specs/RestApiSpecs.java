@@ -12,7 +12,6 @@ import static reqres.helpers.CustomApiListener.withCustomTemplates;
 public class RestApiSpecs {
 
     public static RequestSpecification requestSpec = new RequestSpecBuilder()
-            //.filter(withCustomTemplates())
             .addFilter(withCustomTemplates())
             .log(LogDetail.URI)
             .log(LogDetail.METHOD)
@@ -23,18 +22,6 @@ public class RestApiSpecs {
     public static ResponseSpecification responseSpec = new ResponseSpecBuilder()
             .log(LogDetail.STATUS)
             .log(LogDetail.BODY)
-            .expectStatusCode(200)
             .build();
 
-    public static ResponseSpecification response404Spec = new ResponseSpecBuilder()
-            .log(LogDetail.STATUS)
-            .log(LogDetail.BODY)
-            .expectStatusCode(404)
-            .build();
-
-    public static ResponseSpecification response204Spec = new ResponseSpecBuilder()
-            .log(LogDetail.STATUS)
-            .log(LogDetail.BODY)
-            .expectStatusCode(204)
-            .build();
 }

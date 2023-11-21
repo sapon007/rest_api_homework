@@ -1,4 +1,4 @@
-package reqres.models.lombokModelsForListUsers;
+package reqres.models.lombokmodelsforlistusers;
 
 import lombok.Data;
 
