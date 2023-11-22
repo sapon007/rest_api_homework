@@ -1,5 +1,6 @@
 package reqres;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import reqres.models.*;
 import reqres.models.lombokmodelsforlistusers.ListUsersModel;
@@ -9,6 +10,7 @@ import static io.restassured.RestAssured.given;
 import static org.assertj.core.api.Assertions.assertThat;
 import static reqres.specs.RestApiSpecs.*;
 
+@Tag("specs_and_models_tests")
 public class TestWithSpecsAndModels extends TestBase {
 
 
